@@ -1,0 +1,68 @@
+<link href="./style.css" rel="stylesheet" type="text/css" media="screen, projection"/>
+
+	<div class="form-container sign-in-container">
+		<form action="#" id="reg-form">
+			<h1>Create Fenix Rider Account</h1>
+			<div class="social-container">
+				
+				
+			</div>
+			<input type="text" autocomplete="off" placeholder="Rider Name" id="username"/>
+			<input type="password" autocomplete="off" placeholder="Password" id="password" />
+			<button id="register" >Register</button>
+			<button id="login">Login</button>
+			
+		</form>
+		<script>
+		
+		document.getElementById("register").addEventListener("click", signupUser);
+		document.getElementById("login").addEventListener("click", loginUser);
+
+
+			async function signupUser(event) {
+				event.preventDefault()
+				const username = document.getElementById("username").value
+				const password = document.getElementById("password").value
+
+				const result =  await fetch('/api/v1/registerRider', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						  username,
+						  password
+					})
+				}).then((response)=> response.json())
+              
+				if (result.status === '00') {
+                     alert(result.message)
+				} else {
+					alert(result.message)
+				}
+			}
+
+			async function loginUser(event) {
+				event.preventDefault()
+				const username = document.getElementById("username").value
+				const password = document.getElementById("password").value
+
+				const result =  await fetch('/api/v1/loginRider', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						  username,
+						  password
+					})
+				}).then((response)=> response.json())
+              
+				if (result.status === '200') {
+                     alert(result.user + result.message)
+				} else {
+					alert(result.message)
+				}
+			}
+		</script>
+

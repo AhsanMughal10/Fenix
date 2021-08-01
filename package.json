@@ -1,0 +1,22 @@
+{
+  "name": "fenix",
+  "version": "1.0.0",
+  "description": "Fenix Task of Login/Singup user",
+  "main": "authentication.js",
+  "scripts": {
+    "dev": "nodemon ./authentication.js localhost 8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HafizAhsan",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
